@@ -1,0 +1,116 @@
+.tableContainer {
+  border-radius: 16px;
+  box-shadow: 0px 0px 2px 2px lightgrey;
+  overflow-x: hidden;
+}
+table {
+  width: 100%;
+  text-align: left;
+  border-spacing: 0;
+  position: relative;
+  background-color: #fff;
+}
+caption{
+  width: 100vw;
+  white-space: nowrap;
+  background: #E1E1E1;
+  border-bottom: 1px solid black; 
+  padding: 16px 0px;
+}
+th {
+  padding: 24px;
+  position: sticky;
+  top: 0;
+  bottom: 10; 
+  background:  #E1E1E1;
+  /* vertical-align: bottom; */
+  font-weight: 500;
+}
+tr:hover {
+  background: #EFEDFD;
+}
+tr{transition: all ease-in-out .25s}
+            .selected{background-color:#EFEDFD;font-weight: bold}
+td {
+  /* white-space: nowrap; */
+  padding: 24px;
+  border-bottom: 1px solid #E1E1E1; 
+}
+
+.pagination-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.noData {
+  margin: 50px;
+  transform: translate(600px);
+  display: grid;
+  place-items: center;
+  color: red;
+}
+
+.checkbox-input{
+  /* position: absolute; */
+  inset: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  /* opacity: 0; */
+}
+
+/*
+	This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+	@media
+	  only screen 
+    and (max-width: 760px), (min-device-width: 768px) 
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+      
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+    tr {
+      border-bottom: 1px solid #E1E1E1; 
+    }
+      
+    .checkbox-input{ 
+			/* Top/left values mimic padding */
+      position: absolute;
+      padding: 8px 0px 0px 0px;
+      z-index: 1000;
+      margin-top: 22px;
+      margin-left: 16px;
+    }
+		td {
+			/* Behave  like a "row" */
+			border: none;
+      padding: 8px 16px 8px 16px;
+			position: relative;
+			padding-left: 55%;
+      word-wrap: break-word;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+      padding: 8px 16px 8px 16px;
+      content: attr(data-title); 
+      margin-left: 28px;
+      word-wrap: break-word;
+		}
+	}
